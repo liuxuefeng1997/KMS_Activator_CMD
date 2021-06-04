@@ -1,5 +1,5 @@
 @echo off
-title KMS ¼¤»î¹¤¾ß£¨±£³ÖÁªÍøÓÀ¾Ã¼¤»î£©
+title KMS æ¿€æ´»å·¥å…·ï¼ˆä¿æŒè”ç½‘æ°¸ä¹…æ¿€æ´»ï¼‰
 color 0c
 #=====================================
 setlocal EnableDelayedExpansion& cd /d "%~dp0"
@@ -7,17 +7,17 @@ setlocal EnableDelayedExpansion& cd /d "%~dp0"
 :mainmenu
 mode con cols=35 lines=12
 cls
-echo   KMS ¼¤»î¹¤¾ß£¨±£³ÖÁªÍøÓÀ¾Ã¼¤»î£©
+echo   KMS æ¿€æ´»å·¥å…·ï¼ˆä¿æŒè”ç½‘æ°¸ä¹…æ¿€æ´»ï¼‰
 echo.
-echo                Ö÷²Ëµ¥
+echo                ä¸»èœå•
 echo.
-echo 1¡¢Windows ¼¤»î
-echo 2¡¢Office ¼¤»î
-echo Q¡¢ÍË³ö³ÌĞò
+echo 1ã€Windows æ¿€æ´»
+echo 2ã€Office æ¿€æ´»
+echo Qã€é€€å‡ºç¨‹åº
 echo.
-echo                      °æ±¾10_210524
+echo                      ç‰ˆæœ¬10_210524
 echo.
-set /p user_input_main=ÇëÑ¡ÔñÒª¼¤»îµÄÏîÄ¿£º
+set /p user_input_main=è¯·é€‰æ‹©è¦æ¿€æ´»çš„é¡¹ç›®ï¼š
 if not defined user_input_main goto:erra
 if %user_input_main% equ 1 goto menu
 if %user_input_main% equ 2 goto office
@@ -36,27 +36,27 @@ if exist "%ProgramFiles%\Microsoft Office\Office16\ospp.vbs" cd /d "%ProgramFile
 if exist "%ProgramFiles(x86)%\Microsoft Office\Office16\ospp.vbs" cd /d "%ProgramFiles(x86)%\Microsoft Office\Office16"
 
 cls
-echo                KMS ¼¤»î¹¤¾ß£¨±£³ÖÁªÍøÓÀ¾Ã¼¤»î£©
+echo                KMS æ¿€æ´»å·¥å…·ï¼ˆä¿æŒè”ç½‘æ°¸ä¹…æ¿€æ´»ï¼‰
 echo.
-echo                        Office ¼¤»î
+echo                        Office æ¿€æ´»
 echo.
-echo 1¡¢Office Pro Plus 2016
-echo 2¡¢Office Visio Pro 2016
-echo 3¡¢Office Project Pro 2016
-echo 4¡¢Office Pro Plus 2019
-echo 5¡¢Office Visio Pro 2019
-echo 6¡¢Office Project Pro 2019
-echo 7¡¢Office Pro Plus 2021(beta)
-echo 8¡¢Office Visio Pro 2021(beta)
-echo 9¡¢Office Project Pro 2021(beta)
-echo U¡¢¸üĞÂKMS¼¤»î·şÎñÆ÷
-echo Q¡¢·µ»ØÖ÷²Ëµ¥
+echo 1ã€Office Pro Plus 2016
+echo 2ã€Office Visio Pro 2016
+echo 3ã€Office Project Pro 2016
+echo 4ã€Office Pro Plus 2019
+echo 5ã€Office Visio Pro 2019
+echo 6ã€Office Project Pro 2019
+echo 7ã€Office Pro Plus 2021(beta)
+echo 8ã€Office Visio Pro 2021(beta)
+echo 9ã€Office Project Pro 2021(beta)
+echo Uã€æ›´æ–°KMSæ¿€æ´»æœåŠ¡å™¨
+echo Qã€è¿”å›ä¸»èœå•
 echo.
-echo *×¢£ºÑ¡ÏîUÎª½ö¸üĞÂKMS·şÎñÆ÷µØÖ·
-echo ..ÇëÈ·ÈÏÉÏ´Î¼¤»îÊ¹ÓÃÁËKMS
-echo ..·ñÔò±¾Ïî²»ÄÜÊ¹ÓÃ
+echo *æ³¨ï¼šé€‰é¡¹Uä¸ºä»…æ›´æ–°KMSæœåŠ¡å™¨åœ°å€
+echo ..è¯·ç¡®è®¤ä¸Šæ¬¡æ¿€æ´»ä½¿ç”¨äº†KMS
+echo ..å¦åˆ™æœ¬é¡¹ä¸èƒ½ä½¿ç”¨
 echo.
-set /p user_input_office=ÇëÑ¡ÔñOffice°æ±¾£º
+set /p user_input_office=è¯·é€‰æ‹©Officeç‰ˆæœ¬ï¼š
 if not defined user_input_office goto:errb
 if %user_input_office% equ 1 goto opp16
 if %user_input_office% equ 2 goto ovp16
@@ -78,16 +78,16 @@ goto mainmenu
  
 cls
  
-echo ÕıÔÚÖØÖÃOffice2016ÁãÊÛ¼¤»î...
+echo æ­£åœ¨é‡ç½®Office2016é›¶å”®æ¿€æ´»...
 cscript ospp.vbs /rearm
  
-echo ÕıÔÚ°²×° KMS Ğí¿ÉÖ¤...
+echo æ­£åœ¨å®‰è£… KMS è®¸å¯è¯...
 for /f %%x in ('dir /b ..\root\Licenses16\proplusvl_kms*.xrm-ms') do cscript ospp.vbs /inslic:"..\root\Licenses16\%%x" >nul
  
-echo ÕıÔÚ°²×° MAK Ğí¿ÉÖ¤...
+echo æ­£åœ¨å®‰è£… MAK è®¸å¯è¯...
 for /f %%x in ('dir /b ..\root\Licenses16\proplusvl_mak*.xrm-ms') do cscript ospp.vbs /inslic:"..\root\Licenses16\%%x" >nul
  
-echo ÕıÔÚ°²×° KMS ÃÜÔ¿...
+echo æ­£åœ¨å®‰è£… KMS å¯†é’¥...
 cscript ospp.vbs /inpkey:XQNVK-8JYDB-WJ9W3-YJ8YR-WFG99
  
 goto e
@@ -95,16 +95,16 @@ goto e
 :ovp16
 cls
  
-echo ÕıÔÚÖØÖÃVisio2016ÁãÊÛ¼¤»î...
+echo æ­£åœ¨é‡ç½®Visio2016é›¶å”®æ¿€æ´»...
 cscript ospp.vbs /rearm
  
-echo ÕıÔÚ°²×° KMS Ğí¿ÉÖ¤...
+echo æ­£åœ¨å®‰è£… KMS è®¸å¯è¯...
 for /f %%x in ('dir /b ..\root\Licenses16\visio???vl_kms*.xrm-ms') do cscript ospp.vbs /inslic:"..\root\Licenses16\%%x" >nul
  
-echo ÕıÔÚ°²×° MAK Ğí¿ÉÖ¤...
+echo æ­£åœ¨å®‰è£… MAK è®¸å¯è¯...
 for /f %%x in ('dir /b ..\root\Licenses16\visio???vl_mak*.xrm-ms') do cscript ospp.vbs /inslic:"..\root\Licenses16\%%x" >nul
  
-echo ÕıÔÚ°²×° KMS ÃÜÔ¿...
+echo æ­£åœ¨å®‰è£… KMS å¯†é’¥...
 cscript ospp.vbs /inpkey:PD3PC-RHNGV-FXJ29-8JK7D-RJRJK
  
 goto e
@@ -113,16 +113,16 @@ goto e
 
 cls
  
-echo ÕıÔÚÖØÖÃProject2016ÁãÊÛ¼¤»î...
+echo æ­£åœ¨é‡ç½®Project2016é›¶å”®æ¿€æ´»...
 cscript ospp.vbs /rearm
  
-echo ÕıÔÚ°²×° KMS Ğí¿ÉÖ¤...
+echo æ­£åœ¨å®‰è£… KMS è®¸å¯è¯...
 for /f %%x in ('dir /b ..\root\Licenses16\project???vl_kms*.xrm-ms') do cscript ospp.vbs /inslic:"..\root\Licenses16\%%x" >nul
  
-echo ÕıÔÚ°²×° MAK Ğí¿ÉÖ¤...
+echo æ­£åœ¨å®‰è£… MAK è®¸å¯è¯...
 for /f %%x in ('dir /b ..\root\Licenses16\project???vl_mak*.xrm-ms') do cscript ospp.vbs /inslic:"..\root\Licenses16\%%x" >nul
  
-echo ÕıÔÚ°²×° KMS ÃÜÔ¿...
+echo æ­£åœ¨å®‰è£… KMS å¯†é’¥...
 cscript ospp.vbs /inpkey:YG9NW-3K39V-2T3HJ-93F3Q-G83KT
  
 goto e
@@ -131,16 +131,16 @@ goto e
 
 cls
 
-echo ÕıÔÚÖØÖÃOffice2019ÁãÊÛ¼¤»î...
+echo æ­£åœ¨é‡ç½®Office2019é›¶å”®æ¿€æ´»...
 cscript ospp.vbs /rearm
 
-echo ÕıÔÚ°²×° KMS Ğí¿ÉÖ¤...
+echo æ­£åœ¨å®‰è£… KMS è®¸å¯è¯...
 for /f %%x in ('dir /b ..\root\Licenses16\ProPlus2019VL_kms*.xrm-ms') do cscript ospp.vbs /inslic:"..\root\Licenses16\%%x" >nul
 
-echo ÕıÔÚ°²×° MAK Ğí¿ÉÖ¤...
+echo æ­£åœ¨å®‰è£… MAK è®¸å¯è¯...
 for /f %%x in ('dir /b ..\root\Licenses16\ProPlus2019VL_mak*.xrm-ms') do cscript ospp.vbs /inslic:"..\root\Licenses16\%%x" >nul
 
-echo ÕıÔÚ°²×° KMS ÃÜÔ¿...
+echo æ­£åœ¨å®‰è£… KMS å¯†é’¥...
 cscript ospp.vbs /inpkey:NMMKJ-6RK4F-KMJVX-8D9MJ-6MWKP
 
 goto e
@@ -148,16 +148,16 @@ goto e
 :ovp19
 cls
 
-echo ÕıÔÚÖØÖÃVisio2019ÁãÊÛ¼¤»î...
+echo æ­£åœ¨é‡ç½®Visio2019é›¶å”®æ¿€æ´»...
 cscript ospp.vbs /rearm
 
-echo ÕıÔÚ°²×° KMS Ğí¿ÉÖ¤...
+echo æ­£åœ¨å®‰è£… KMS è®¸å¯è¯...
 for /f %%x in ('dir /b ..\root\Licenses16\visio???vl_kms*.xrm-ms') do cscript ospp.vbs /inslic:"..\root\Licenses16\%%x" >nul
 
-echo ÕıÔÚ°²×° MAK Ğí¿ÉÖ¤...
+echo æ­£åœ¨å®‰è£… MAK è®¸å¯è¯...
 for /f %%x in ('dir /b ..\root\Licenses16\visio???vl_mak*.xrm-ms') do cscript ospp.vbs /inslic:"..\root\Licenses16\%%x" >nul
 
-echo ÕıÔÚ°²×° KMS ÃÜÔ¿...
+echo æ­£åœ¨å®‰è£… KMS å¯†é’¥...
 cscript ospp.vbs /inpkey:9BGNQ-K37YR-RQHF2-38RQ3-7VCBB
 
 goto :e
@@ -166,16 +166,16 @@ goto :e
 
 cls
 
-echo ÕıÔÚÖØÖÃProject2019ÁãÊÛ¼¤»î...
+echo æ­£åœ¨é‡ç½®Project2019é›¶å”®æ¿€æ´»...
 cscript ospp.vbs /rearm
 
-echo ÕıÔÚ°²×° KMS Ğí¿ÉÖ¤...
+echo æ­£åœ¨å®‰è£… KMS è®¸å¯è¯...
 for /f %%x in ('dir /b ..\root\Licenses16\project???vl_kms*.xrm-ms') do cscript ospp.vbs /inslic:"..\root\Licenses16\%%x" >nul
 
-echo ÕıÔÚ°²×° MAK Ğí¿ÉÖ¤...
+echo æ­£åœ¨å®‰è£… MAK è®¸å¯è¯...
 for /f %%x in ('dir /b ..\root\Licenses16\project???vl_mak*.xrm-ms') do cscript ospp.vbs /inslic:"..\root\Licenses16\%%x" >nul
 
-echo ÕıÔÚ°²×° KMS ÃÜÔ¿...
+echo æ­£åœ¨å®‰è£… KMS å¯†é’¥...
 cscript ospp.vbs /inpkey:B4NPR-3FKK7-T2MBV-FRQ4W-PKD2B
 
 goto :e
@@ -184,7 +184,7 @@ goto :e
 
 cls
 
-echo ÕıÔÚ°²×° KMS ÃÜÔ¿...
+echo æ­£åœ¨å®‰è£… KMS å¯†é’¥...
 cscript ospp.vbs /inpkey:HFPBN-RYGG8-HQWCW-26CH6-PDPVF
 
 goto e
@@ -192,7 +192,7 @@ goto e
 :ovp21
 cls
 
-echo ÕıÔÚ°²×° KMS ÃÜÔ¿...
+echo æ­£åœ¨å®‰è£… KMS å¯†é’¥...
 cscript ospp.vbs /inpkey:2XYX7-NXXBK-9CK7W-K2TKW-JFJ7G
 
 goto :e
@@ -201,7 +201,7 @@ goto :e
 
 cls
 
-echo ÕıÔÚ°²×° KMS ÃÜÔ¿...
+echo æ­£åœ¨å®‰è£… KMS å¯†é’¥...
 cscript ospp.vbs /inpkey:WDNBY-PCYFY-9WP6G-BXVXM-92HDV
 
 goto :e
@@ -210,31 +210,31 @@ goto :e
 cscript ospp.vbs /sethst:kms.03k.org
 cscript ospp.vbs /act
 cscript ospp.vbs /dstatus
-echo ¼¤»îÁ÷³Ì½áÊø
+echo æ¿€æ´»æµç¨‹ç»“æŸ
 pause
 goto mainmenu
 #=====================================
 :menu
 mode con cols=35 lines=19
 cls
-echo   KMS ¼¤»î¹¤¾ß£¨±£³ÖÁªÍøÓÀ¾Ã¼¤»î£©
+echo   KMS æ¿€æ´»å·¥å…·ï¼ˆä¿æŒè”ç½‘æ°¸ä¹…æ¿€æ´»ï¼‰
 echo.
-echo          Windows 10 ¼¤»î
+echo          Windows 10 æ¿€æ´»
 echo.
-echo 1¡¢×¨Òµ°æ
-echo 2¡¢×¨Òµ¹¤×÷Õ¾°æ
-echo 3¡¢×¨Òµ½ÌÓı°æ
-echo 4¡¢½ÌÓı°æ
-echo 5¡¢ÆóÒµ°æ
-echo C¡¢¼ì²âÏµÍ³°æ±¾£¨Beta£©
-echo U¡¢¸üĞÂKMS¼¤»î·şÎñÆ÷
-echo Q¡¢·µ»ØÖ÷²Ëµ¥
+echo 1ã€ä¸“ä¸šç‰ˆ
+echo 2ã€ä¸“ä¸šå·¥ä½œç«™ç‰ˆ
+echo 3ã€ä¸“ä¸šæ•™è‚²ç‰ˆ
+echo 4ã€æ•™è‚²ç‰ˆ
+echo 5ã€ä¼ä¸šç‰ˆ
+echo Cã€æ£€æµ‹ç³»ç»Ÿç‰ˆæœ¬ï¼ˆBetaï¼‰
+echo Uã€æ›´æ–°KMSæ¿€æ´»æœåŠ¡å™¨
+echo Qã€è¿”å›ä¸»èœå•
 echo.
-echo *×¢£ºÑ¡ÏîUÎª½ö¸üĞÂKMS·şÎñÆ÷µØÖ·
-echo ..ÇëÈ·ÈÏÉÏ´Î¼¤»îÊ¹ÓÃÁËKMS
-echo ..·ñÔò±¾Ïî²»ÄÜÊ¹ÓÃ
+echo *æ³¨ï¼šé€‰é¡¹Uä¸ºä»…æ›´æ–°KMSæœåŠ¡å™¨åœ°å€
+echo ..è¯·ç¡®è®¤ä¸Šæ¬¡æ¿€æ´»ä½¿ç”¨äº†KMS
+echo ..å¦åˆ™æœ¬é¡¹ä¸èƒ½ä½¿ç”¨
 echo.
-set /p user_input_os=ÇëÑ¡ÔñÏµÍ³°æ±¾£º
+set /p user_input_os=è¯·é€‰æ‹©ç³»ç»Ÿç‰ˆæœ¬ï¼š
 if not defined user_input_os goto:errc
 if %user_input_os% equ 1 goto pro
 if %user_input_os% equ 2 goto prostation
@@ -251,7 +251,7 @@ if %user_input_os% equ Q goto mainmenu
 mode con cols=35 lines=8
 cls
 echo.
-echo      µ±Ç°ÏµÍ³°æ±¾£¨Beta£©
+echo      å½“å‰ç³»ç»Ÿç‰ˆæœ¬ï¼ˆBetaï¼‰
 echo.
 wmic os get caption
 pause
@@ -264,31 +264,31 @@ slmgr /skms kms.03k.org
 slmgr /ato
 goto mainmenu
 
-#10×¨Òµ°æ
+#10ä¸“ä¸šç‰ˆ
 :pro
 slmgr /upk
 slmgr /ipk W269N-WFGWX-YVC9B-4J6C9-T83GX
 goto finish
 
-#10×¨Òµ¹¤×÷Õ¾°æ
+#10ä¸“ä¸šå·¥ä½œç«™ç‰ˆ
 :prostation
 slmgr /upk
 slmgr /ipk NRG8B-VKK3Q-CXVCJ-9G2XF-6Q84J
 goto finish
 
-#10×¨Òµ½ÌÓı°æ
+#10ä¸“ä¸šæ•™è‚²ç‰ˆ
 :prolearn
 slmgr /upk
 slmgr /ipk 6TP4R-GNPTD-KYYHQ-7B7DP-J447Y
 goto finish
 
-#10½ÌÓı°æ
+#10æ•™è‚²ç‰ˆ
 :learn
 slmgr /upk
 slmgr /ipk NW6C2-QMPVW-D7KKK-3GKT6-VCFB2
 goto finish
 
-#10ÆóÒµ°æ
+#10ä¼ä¸šç‰ˆ
 :ep
 slmgr /upk
 slmgr /ipk NPPR9-FWDCX-D2C8J-H872K-2YT43
