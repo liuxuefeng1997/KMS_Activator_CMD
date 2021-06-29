@@ -34,7 +34,7 @@ echo 1、Windows 激活
 echo 2、Office 激活
 echo Q、退出程序
 echo.
-echo                      版本10_210524
+echo                      版本11_210629
 echo.
 set /p user_input_main=请选择要激活的项目：
 if not defined user_input_main goto:erra
