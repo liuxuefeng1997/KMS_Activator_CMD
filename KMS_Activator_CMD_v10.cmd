@@ -11,7 +11,7 @@ echo.
 echo           选择激活服务器
 echo.
 echo 1、零散坑の服务器（默认）
-echo 2、win.pubの服务器
+echo 2、kms.pubの服务器
 echo.
 echo.
 set /p user_input_host=请选择要激活的项目：
