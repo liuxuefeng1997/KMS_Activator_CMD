@@ -11,13 +11,13 @@ echo.
 echo           选择激活服务器
 echo.
 echo 1、零散坑の服务器（默认）
-echo 2、作者の服务器
+echo 2、win.pubの服务器
 echo.
 echo.
 set /p user_input_host=请选择要激活的项目：
 if not defined user_input_host goto:default_host
 if %user_input_host% equ 1 set kms_host=kms.03k.org
-if %user_input_host% equ 2 set kms_host=kms.mailx.top
+if %user_input_host% equ 2 set kms_host=win.kms.pub
 goto mainmenu
 :default_host
 set kms_host=kms.03k.org
