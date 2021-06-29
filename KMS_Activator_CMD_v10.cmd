@@ -4,6 +4,25 @@ color 0c
 #=====================================
 setlocal EnableDelayedExpansion& cd /d "%~dp0"
 #=====================================
+mode con cols=35 lines=10
+cls
+echo   KMS 激活工具（保持联网永久激活）
+echo.
+echo           选择激活服务器
+echo.
+echo 1、零散坑の服务器（默认）
+echo 2、作者の服务器
+echo.
+echo.
+set /p user_input_host=请选择要激活的项目：
+if not defined user_input_host goto:default_host
+if %user_input_host% equ 1 set kms_host=kms.03k.org
+if %user_input_host% equ 2 set kms_host=kms.mailx.top
+goto mainmenu
+:default_host
+set kms_host=kms.03k.org
+goto mainmenu
+#======================================
 :mainmenu
 mode con cols=35 lines=12
 cls
@@ -207,7 +226,7 @@ cscript ospp.vbs /inpkey:WDNBY-PCYFY-9WP6G-BXVXM-92HDV
 goto :e
 #=====================================
 :e
-cscript ospp.vbs /sethst:kms.03k.org
+cscript ospp.vbs /sethst:%kms_host%
 cscript ospp.vbs /act
 cscript ospp.vbs /dstatus
 echo 激活流程结束
@@ -260,7 +279,7 @@ goto menu
 goto menu
 #=====================================
 :finish
-slmgr /skms kms.03k.org
+slmgr /skms %kms_host%
 slmgr /ato
 goto mainmenu
 
