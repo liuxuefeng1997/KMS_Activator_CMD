@@ -24,6 +24,7 @@ set kms_host=kms.03k.org
 goto mainmenu
 #======================================
 :mainmenu
+set user_input_main=
 mode con cols=35 lines=12
 cls
 echo   KMS 激活工具（保持联网永久激活）
@@ -34,211 +35,43 @@ echo 1、Windows 激活
 echo 2、Office 激活
 echo Q、退出程序
 echo.
-echo                      版本11_210629
+echo                      版本12_230619
 echo.
 set /p user_input_main=请选择要激活的项目：
-if not defined user_input_main goto:erra
+if not defined user_input_main goto:mainmenu
 if %user_input_main% equ 1 goto menu
 if %user_input_main% equ 2 goto office
 if %user_input_main% equ q exit
 if %user_input_main% equ Q exit
-
-:erra
-goto mainmenu
 #=====================================
-
 :office
-mode con cols=60 lines=22
-
-:runas
-if exist "%ProgramFiles%\Microsoft Office\Office16\ospp.vbs" cd /d "%ProgramFiles%\Microsoft Office\Office16"
-if exist "%ProgramFiles(x86)%\Microsoft Office\Office16\ospp.vbs" cd /d "%ProgramFiles(x86)%\Microsoft Office\Office16"
-
+set user_input_o=
+mode con cols=35 lines=8
 cls
-echo                KMS 激活工具（保持联网永久激活）
 echo.
-echo                        Office 激活
+echo   KMS 激活工具（保持联网永久激活）
 echo.
-echo 1、Office Pro Plus 2016
-echo 2、Office Visio Pro 2016
-echo 3、Office Project Pro 2016
-echo 4、Office Pro Plus 2019
-echo 5、Office Visio Pro 2019
-echo 6、Office Project Pro 2019
-echo 7、Office Pro Plus 2021(beta)
-echo 8、Office Visio Pro 2021(beta)
-echo 9、Office Project Pro 2021(beta)
-echo U、更新KMS激活服务器
-echo Q、返回主菜单
+echo   V12 版本开始不再提供Office激活
+echo   推荐使用 Office Tool Plus 激活
 echo.
-echo *注：选项U为仅更新KMS服务器地址
-echo ..请确认上次激活使用了KMS
-echo ..否则本项不能使用
-echo.
-set /p user_input_office=请选择Office版本：
-if not defined user_input_office goto:errb
-if %user_input_office% equ 1 goto opp16
-if %user_input_office% equ 2 goto ovp16
-if %user_input_office% equ 3 goto opj16
-if %user_input_office% equ 4 goto opp19
-if %user_input_office% equ 5 goto ovp19
-if %user_input_office% equ 6 goto opj19
-if %user_input_office% equ 7 goto opp21
-if %user_input_office% equ 8 goto ovp21
-if %user_input_office% equ 9 goto opj21
-if %user_input_office% equ u goto e
-if %user_input_office% equ U goto e
-if %user_input_office% equ q goto mainmenu
-if %user_input_office% equ Q goto mainmenu
-:errb
+set /p user_input_o=是否打开OTP网站(Y/N,默认Y)：
+if not defined user_input_o goto:otp
+if %user_input_o% equ N goto mainmenu
+if %user_input_o% equ n goto mainmenu
+if %user_input_o% equ Y goto otp
+if %user_input_o% equ y goto otp
 goto mainmenu
-#=====================================
-:opp16
- 
-cls
- 
-echo 正在重置Office2016零售激活...
-cscript ospp.vbs /rearm
- 
-echo 正在安装 KMS 许可证...
-for /f %%x in ('dir /b ..\root\Licenses16\proplusvl_kms*.xrm-ms') do cscript ospp.vbs /inslic:"..\root\Licenses16\%%x" >nul
- 
-echo 正在安装 MAK 许可证...
-for /f %%x in ('dir /b ..\root\Licenses16\proplusvl_mak*.xrm-ms') do cscript ospp.vbs /inslic:"..\root\Licenses16\%%x" >nul
- 
-echo 正在安装 KMS 密钥...
-cscript ospp.vbs /inpkey:XQNVK-8JYDB-WJ9W3-YJ8YR-WFG99
- 
-goto e
-#=====================================
-:ovp16
-cls
- 
-echo 正在重置Visio2016零售激活...
-cscript ospp.vbs /rearm
- 
-echo 正在安装 KMS 许可证...
-for /f %%x in ('dir /b ..\root\Licenses16\visio???vl_kms*.xrm-ms') do cscript ospp.vbs /inslic:"..\root\Licenses16\%%x" >nul
- 
-echo 正在安装 MAK 许可证...
-for /f %%x in ('dir /b ..\root\Licenses16\visio???vl_mak*.xrm-ms') do cscript ospp.vbs /inslic:"..\root\Licenses16\%%x" >nul
- 
-echo 正在安装 KMS 密钥...
-cscript ospp.vbs /inpkey:PD3PC-RHNGV-FXJ29-8JK7D-RJRJK
- 
-goto e
-#=====================================
-:opj16
-
-cls
- 
-echo 正在重置Project2016零售激活...
-cscript ospp.vbs /rearm
- 
-echo 正在安装 KMS 许可证...
-for /f %%x in ('dir /b ..\root\Licenses16\project???vl_kms*.xrm-ms') do cscript ospp.vbs /inslic:"..\root\Licenses16\%%x" >nul
- 
-echo 正在安装 MAK 许可证...
-for /f %%x in ('dir /b ..\root\Licenses16\project???vl_mak*.xrm-ms') do cscript ospp.vbs /inslic:"..\root\Licenses16\%%x" >nul
- 
-echo 正在安装 KMS 密钥...
-cscript ospp.vbs /inpkey:YG9NW-3K39V-2T3HJ-93F3Q-G83KT
- 
-goto e
-#=====================================
-:opp19
-
-cls
-
-echo 正在重置Office2019零售激活...
-cscript ospp.vbs /rearm
-
-echo 正在安装 KMS 许可证...
-for /f %%x in ('dir /b ..\root\Licenses16\ProPlus2019VL_kms*.xrm-ms') do cscript ospp.vbs /inslic:"..\root\Licenses16\%%x" >nul
-
-echo 正在安装 MAK 许可证...
-for /f %%x in ('dir /b ..\root\Licenses16\ProPlus2019VL_mak*.xrm-ms') do cscript ospp.vbs /inslic:"..\root\Licenses16\%%x" >nul
-
-echo 正在安装 KMS 密钥...
-cscript ospp.vbs /inpkey:NMMKJ-6RK4F-KMJVX-8D9MJ-6MWKP
-
-goto e
-#=====================================
-:ovp19
-cls
-
-echo 正在重置Visio2019零售激活...
-cscript ospp.vbs /rearm
-
-echo 正在安装 KMS 许可证...
-for /f %%x in ('dir /b ..\root\Licenses16\visio???vl_kms*.xrm-ms') do cscript ospp.vbs /inslic:"..\root\Licenses16\%%x" >nul
-
-echo 正在安装 MAK 许可证...
-for /f %%x in ('dir /b ..\root\Licenses16\visio???vl_mak*.xrm-ms') do cscript ospp.vbs /inslic:"..\root\Licenses16\%%x" >nul
-
-echo 正在安装 KMS 密钥...
-cscript ospp.vbs /inpkey:9BGNQ-K37YR-RQHF2-38RQ3-7VCBB
-
-goto :e
-#=====================================
-:opj19
-
-cls
-
-echo 正在重置Project2019零售激活...
-cscript ospp.vbs /rearm
-
-echo 正在安装 KMS 许可证...
-for /f %%x in ('dir /b ..\root\Licenses16\project???vl_kms*.xrm-ms') do cscript ospp.vbs /inslic:"..\root\Licenses16\%%x" >nul
-
-echo 正在安装 MAK 许可证...
-for /f %%x in ('dir /b ..\root\Licenses16\project???vl_mak*.xrm-ms') do cscript ospp.vbs /inslic:"..\root\Licenses16\%%x" >nul
-
-echo 正在安装 KMS 密钥...
-cscript ospp.vbs /inpkey:B4NPR-3FKK7-T2MBV-FRQ4W-PKD2B
-
-goto :e
-#=====================================
-:opp21
-
-cls
-
-echo 正在安装 KMS 密钥...
-cscript ospp.vbs /inpkey:HFPBN-RYGG8-HQWCW-26CH6-PDPVF
-
-goto e
-#=====================================
-:ovp21
-cls
-
-echo 正在安装 KMS 密钥...
-cscript ospp.vbs /inpkey:2XYX7-NXXBK-9CK7W-K2TKW-JFJ7G
-
-goto :e
-#=====================================
-:opj21
-
-cls
-
-echo 正在安装 KMS 密钥...
-cscript ospp.vbs /inpkey:WDNBY-PCYFY-9WP6G-BXVXM-92HDV
-
-goto :e
-#=====================================
-:e
-cscript ospp.vbs /sethst:%kms_host%
-cscript ospp.vbs /act
-cscript ospp.vbs /dstatus
-echo 激活流程结束
-pause
+:otp
+start https://otp.landian.vip/zh-cn/
 goto mainmenu
 #=====================================
 :menu
+set user_input_os=
 mode con cols=35 lines=19
 cls
 echo   KMS 激活工具（保持联网永久激活）
 echo.
-echo          Windows 10 激活
+echo            Windows 激活
 echo.
 echo 1、专业版
 echo 2、专业工作站版
@@ -254,7 +87,7 @@ echo ..请确认上次激活使用了KMS
 echo ..否则本项不能使用
 echo.
 set /p user_input_os=请选择系统版本：
-if not defined user_input_os goto:errc
+if not defined user_input_os goto:menu
 if %user_input_os% equ 1 goto pro
 if %user_input_os% equ 2 goto prostation
 if %user_input_os% equ 3 goto prolearn
@@ -274,8 +107,6 @@ echo      当前系统版本（Beta）
 echo.
 wmic os get caption
 pause
-goto menu
-:errc
 goto menu
 #=====================================
 :finish
